@@ -1,21 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as eva from '@eva-design/eva';
+import {ApplicationProvider, Layout, Button, IconRegistry} from '@ui-kitten/components';
+import {EvaIconsPack} from '@ui-kitten/eva-icons'
+import { default as theme } from './custom-theme.json';
+import {AppNavigator} from "./src/navigation/Navigation"; // <-- Import app theme
+import {Provider} from 'react-redux';
+import Store from './src/store/reduxConfig'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start wo!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default () => (
+    <Provider store={ Store}>
+        <IconRegistry icons={EvaIconsPack}/>
+        <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
+            <AppNavigator/>
+        </ApplicationProvider>
+    </Provider>
+);
