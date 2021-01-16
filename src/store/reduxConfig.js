@@ -1,4 +1,4 @@
 import {createStore} from "redux";
-import FavReducer from "./reducers/Fav.reducer";
+import ViewedReducer from "./reducers/Viewed.reducer";
 
-export default createStore(FavReducer);
+export default createStore(ViewedReducer);

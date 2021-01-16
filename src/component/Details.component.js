@@ -1,15 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Image, SafeAreaView, StyleSheet} from "react-native";
-import {Layout, TopNavigationAction, TopNavigation, Divider, Text, Button} from '@ui-kitten/components'
-import {BackIcon, FavIcon, FavIconEmpty} from "../assets/Icons";
+import {Layout, TopNavigationAction, TopNavigation, Divider, Text, Button, List, ListItem} from '@ui-kitten/components'
+import {BackIcon, ViewedIcon, ViewedIconEmpty} from "../assets/Icons";
 import {connect} from "react-redux";
-import {getImageFromApi} from "../api/movieApi";
+import {
+    getImageFromApi,
+    getMoviesCreditFromApiWithSearchedText,
+} from "../api/movieApi";
 
 const Details = ({navigation, route, favorites, dispatch}) => {
 
     const {item} = route.params;
-    console.log(item);
-    console.log("result getImageFromAPI" + getImageFromApi(item.poster_path))
     const navigateBack = () => {
         navigation.goBack();
     };
@@ -28,6 +29,13 @@ const Details = ({navigation, route, favorites, dispatch}) => {
         dispatch(action)
     }
 
+    const [credits, setCredits] = useState([]);
+    console.log(credits);
+    const loadMovieCredits = (idMovie) => {
+        getMoviesCreditFromApiWithSearchedText(idMovie).then((data) => setCredits(data.results))
+    }
+    loadMovieCredits(item.id);
+
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <TopNavigation title='Details' alignment='center' accessoryLeft={BackAction}/>
@@ -38,13 +46,22 @@ const Details = ({navigation, route, favorites, dispatch}) => {
                 <Text category={'h6'}>Date de sortie : {item.release_date}</Text>
                 <Text category={'s1'}>{item.overview}</Text>
 
+                <List
+                    data={credits}
+                    renderItem={({credit}) =>(
+                        <ListItem
+                            title={credit.name}
+                        />
+                    )}
+                />
+
                 {
                     favorites.findIndex(element => element.id === item.id) !== -1 ?
                         (
-                            <Button appearance={"ghost"} status={"primary"} accessoryLeft={FavIcon} onPress={()=> delFav(item)}/>
+                            <Button appearance={"ghost"} status={"primary"} accessoryLeft={ViewedIcon} onPress={()=> delFav(item)}/>
                         ):
                         (
-                            <Button appearance={"ghost"} status={"primary"} accessoryLeft={FavIconEmpty} onPress={()=> addFav(item)}/>
+                            <Button appearance={"ghost"} status={"primary"} accessoryLeft={ViewedIconEmpty} onPress={()=> addFav(item)}/>
                         )
                 }
             </Layout>

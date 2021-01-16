@@ -2,13 +2,13 @@ import React from 'react';
 import {SafeAreaView} from "react-native";
 import {Layout, Button, Text, List, TopNavigation, Divider} from '@ui-kitten/components';
 import {connect} from 'react-redux'
-import ItemList from "./ItemList.component";
+import ItemList from "./MovieList.component";
 
-const Fav = ({favorites, navigation}) => {
+const Viewed = ({favorites, navigation}) => {
     console.log(favorites);
     return(
         <SafeAreaView style={{ flex: 1 }}>
-            <TopNavigation title='Home' alignment='center'/>
+            <TopNavigation title='Viewed' alignment='center'/>
             <Divider/>
             <Layout style={{ flex: 1 }}>
                 <ItemList navigation ={navigation} data={favorites}/>
@@ -24,5 +24,5 @@ const mapStateToProps = (state) =>{
     };
 }
 
-export default connect(mapStateToProps) (Fav);
+export default connect(mapStateToProps) (Viewed);
 

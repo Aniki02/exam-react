@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Icon, List, ListItem } from '@ui-kitten/components';
 import { StyleSheet } from 'react-native';
-import Item from "./Item";
+import Movie from "./Movie";
 
 
 
@@ -12,7 +12,7 @@ export const ItemList = ({navigation, data}) => {
         <List
             data={data}
             renderItem={({item, index}) =>(
-                <Item item={item} index={index} navigation={navigation}/>
+                <Movie item={item} index={index} navigation={navigation}/>
             )}
         />
     );

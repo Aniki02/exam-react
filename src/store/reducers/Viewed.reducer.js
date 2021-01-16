@@ -1,7 +1,7 @@
 import React from 'react'
 
 const initialState = {favorites: []}
-const FavReducer = (state = initialState, action) => {
+const ViewedReducer = (state = initialState, action) => {
     let nextState;
     switch (action.type) {
         case 'ADD':
@@ -24,4 +24,4 @@ const FavReducer = (state = initialState, action) => {
     }
 }
 
-export default FavReducer
+export default ViewedReducer

@@ -1,17 +1,17 @@
 import React from 'react'
 import {Button, Icon, Layout, ListItem} from "@ui-kitten/components";
-import {FavIcon, FavIconEmpty} from "../assets/Icons";
+import {ViewedIcon, ViewedIconEmpty} from "../assets/Icons";
 import {Image, StyleSheet} from "react-native";
 import {getImageFromApi} from "../api/movieApi";
 
 
 
-const Item = ({ item, index, navigation, isFavorite }) => {
+const Movie = ({ item, index, navigation, isFavorite }) => {
     const renderItemAccessory = (item) => (
         isFavorite ?
-            <Button appearance="ghost" status={'primary'} accessoryLeft={FavIcon} size='tiny' onPress={() => goToDetails(item)}/>
+            <Button appearance="ghost" status={'primary'} accessoryLeft={ViewedIcon} size='tiny' onPress={() => goToDetails(item)}/>
         :
-            <Button appearance="ghost" status={'basic'} accessoryLeft={FavIconEmpty} size='tiny' onPress={() => goToDetails(item)}/>
+            <Button appearance="ghost" status={'basic'} accessoryLeft={ViewedIconEmpty} size='tiny' onPress={() => goToDetails(item)}/>
 
     );
 
@@ -35,7 +35,7 @@ const Item = ({ item, index, navigation, isFavorite }) => {
     );
 }
 
-export default Item;
+export default Movie;
 
 const styles = StyleSheet.create({
     thumbnail: {

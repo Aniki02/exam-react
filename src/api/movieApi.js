@@ -17,3 +17,11 @@ export function getPopularMoviesFromApi(){
         .then((response) => response.json())
         .catch((error) => console.error(error))
 }
+
+export function getMoviesCreditFromApiWithSearchedText (idMovie) {
+    const url = 'https://api.themoviedb.org/3/movie/'+idMovie+'/credits?api_key='+API_KEY+'&language=fr'
+    return fetch(url)
+        .then((response) => response.json())
+        .catch((error) => console.error(error))
+}
+

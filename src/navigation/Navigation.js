@@ -4,9 +4,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../component/Home.component'
 import Details from "../component/Details.component";
-import Fav from "../component/Fav.component";
+import Fav from "../component/Viewed.component";
 import {BottomNavigation, BottomNavigationTab} from "@ui-kitten/components";
-import {FavIcon, HomeIcon} from '../assets/Icons'
+import {ViewedIcon, HomeIcon} from '../assets/Icons'
 
 
 const stack = createStackNavigator();
@@ -25,14 +25,14 @@ const BottomTabBar = ({ navigation, state }) => (
         selectedIndex={state.index}
         onSelect={index => navigation.navigate(state.routeNames[index])}>
         <BottomNavigationTab icon={HomeIcon} title='Accueil'/>
-        <BottomNavigationTab icon={FavIcon} title='Fav'/>
+        <BottomNavigationTab icon={ViewedIcon} title='Viewed'/>
     </BottomNavigation>
 );
 
 const TabNavigator = () => (
     <Navigator tabBar={props => <BottomTabBar {...props} />}>
         <Screen name='Home' component={HomeNavigator}/>
-        <Screen name='Fav' component={Fav}/>
+        <Screen name='Viewed' component={Fav}/>
     </Navigator>
 );
 

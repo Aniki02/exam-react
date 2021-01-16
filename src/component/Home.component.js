@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {SafeAreaView, TextInput, StyleSheet, FlatList} from "react-native";
 import {Layout, Button, TopNavigation, Divider} from '@ui-kitten/components'
-import ItemList from "./ItemList.component";
+import ItemList from "./MovieList.component";
 import {getMoviesFromApiWithSearchedText, getPopularMoviesFromApi} from "../api/movieApi";
 import popularMoviesData from "../helpers/popularMoviesData";
 

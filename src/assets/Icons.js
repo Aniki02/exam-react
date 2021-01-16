@@ -5,12 +5,12 @@ export const BackIcon = (props) => (
     <Icon {...props} name='arrow-back' />
 );
 
-export const FavIcon = (props) => (
-    <Icon {...props} name='star' />
+export const ViewedIcon = (props) => (
+    <Icon {...props} name='eye' />
 );
 
-export const FavIconEmpty = (props) => (
-    <Icon {...props} name='star-outline' />
+export const ViewedIconEmpty = (props) => (
+    <Icon {...props} name='eye-outline' />
 );
 
 export const HomeIcon = (props) => (
